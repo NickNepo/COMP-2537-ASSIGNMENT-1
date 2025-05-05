@@ -20,5 +20,14 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4",
     "webpack-merge": "^5.10.0"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "connect-mongo": "^5.1.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "joi": "^17.13.3",
+    "mongodb": "^6.16.0"
   }
 }
