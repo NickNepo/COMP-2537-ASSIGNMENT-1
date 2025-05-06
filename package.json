@@ -9,9 +9,7 @@
   "license": "",
   "author": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --open --config webpack.config.dev.js",
-    "build": "webpack --config webpack.config.prod.js"
+    "build": "webpack --stats-error-details"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^11.0.0",
@@ -32,4 +30,5 @@
     "mongodb": "^6.16.0",
     "path": "^0.12.7"
   }
+
 }
