@@ -26,12 +26,12 @@ const client = new MongoClient(uri, {
   }
 });
 
-const signupSchema = Joi.object({
+const signupInfo = Joi.object({
   name: Joi.string().max(30).required(),
   email: Joi.string().email().required(),
   password: Joi.string().min(6).required()
 });
-const loginSchema = Joi.object({
+const loginInfo = Joi.object({
   email: Joi.string().email().required(),
   password: Joi.string().required()
 });
@@ -79,7 +79,7 @@ async function start() {
     });
 
     app.post('/signup', async (req, res) => {
-      const { error, value } = signupSchema.validate(req.body);
+      const { error, value } = signupInfo.validate(req.body);
       if (error) {
         return res.send(`<p>${error.message}</p><a href="/signup">Try again</a>`);
       }
@@ -96,14 +96,14 @@ async function start() {
     });
 
     app.post('/login', async (req, res) => {
-      const { error, value } = loginSchema.validate(req.body);
+      const { error, value } = loginInfo.validate(req.body);
       if (error) {
         return res.send(`<p>${error.message}</p><a href="/login">Try again</a>`);
       }
       const { email, password } = value;
       const user = await client.db().collection('users').findOne({ email });
       if (!user || !(await bcrypt.compare(password, user.password))) {
-        return res.send('<p>Invalid credentials</p><a href="/login">Try again</a>');
+        return res.send('<p>Invalid password</p><a href="/login">Try again</a>');
       }
       req.session.name = user.name;
       res.redirect('/members');
