@@ -9,7 +9,8 @@
   "license": "",
   "author": "",
   "scripts": {
-    "build": "webpack --stats-error-details"
+    "dev": "nodemon app.js",
+    "start": "node app.js"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^11.0.0",
