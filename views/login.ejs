@@ -1,13 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head><meta charset="utf-8"><title>Log In</title></head>
-<body>
-<h1>Log In</h1>
-<form action="/login" method="POST">
-    <label>Email:    <input name="email"    type="email"    required></label><br>
-    <label>Password: <input name="password" type="password" required></label><br>
-    <button type="submit">Log In</button>
-</form>
-<p><a href="/">Return to Home</a></p>
-</body>
-</html>
+<%- include('templates/header', {
+title: 'Log In',
+loggedIn: loggedIn,
+name: name
+}) %>
+
+<div class="container">
+    <h1 class="mt-5">Log In</h1>
+    <form action="/login" method="POST" class="mt-4 p-4 bg-white shadow rounded">
+        <div class="mb-3">
+            <label for="email"    class="form-label">Email</label>
+            <input id="email" name="email" type="email"   class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input id="password" name="password" type="password"
+                   class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Log In</button>
+        <a href="/" class="btn btn-link">Cancel</a>
+    </form>
+</div>
+
+<%- include('templates/footer') %>

@@ -1,15 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head><meta charset="utf-8"><title>Home</title></head>
-<body>
-<% if (loggedIn) { %>
-    <h1>Welcome, <%= name %>!</h1>
-    <a href="/members">Members Area</a> |
-    <a href="/logout">Log Out</a>
-<% } else { %>
-    <h1>Welcome to COMP2537 Assignment 1</h1>
-    <a class href="/signup">Sign Up</a> |
-    <a href="/login">Log In</a>
-<% } %>
-</body>
-</html>
+<%- include('templates/header', {
+title: 'Home',
+loggedIn: loggedIn,
+name: name
+}) %>
+
+<div class="container text-center">
+    <h1 class="mt-5">Welcome to Assignment 2 for Comp2537</h1>
+    <% if (loggedIn) { %>
+        <a href="/members" class="btn btn-success mt-4">Go to Members Area</a>
+    <% } else { %>
+        <a href="/signup" class="btn btn-primary mt-4 me-2">Sign Up</a>
+        <a href="/login" class="btn btn-secondary mt-4">Log In</a>
+    <% } %>
+</div>
+
+<%- include('templates/footer') %>

@@ -1,0 +1,17 @@
+<%- include('templates/header', { title, loggedIn, name }) %>
+<div class="container">
+    <h1 class="mt-5">Admin Dashboard</h1>
+    <ul class="list-group mt-4">
+        <% users.forEach(u => { %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span><%= u.name %> (<%= u.email %>) — <%= u.user_type %></span>
+                <% if (u.user_type === 'user') { %>
+                    <a href="/admin/promote/<%= u._id %>" class="btn btn-sm btn btn-info">Promote</a>
+                <% } else { %>
+                    <a href="/admin/demote/<%= u._id %>" class="btn btn-sm btn-danger">Demote</a>
+                <% } %>
+            </li>
+        <% }) %>
+    </ul>
+</div>
+<%- include('templates/footer') %>
